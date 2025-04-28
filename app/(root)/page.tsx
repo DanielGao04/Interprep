@@ -17,6 +17,12 @@ const page = () => {
         </div>
         <Image src="/robot.png" alt="robot" width={400} height={400} className="max-sm:hidden" />
       </section>
+
+      <section>
+        
+      </section>
+
+
     </>
   )
 }
