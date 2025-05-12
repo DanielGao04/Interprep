@@ -11,7 +11,7 @@ const page = () => {
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>Get Interview-Ready with AI-Powered Practice & Feedback</h2>
-          <p className="text-secondary-100">
+          <p className="text-lg">
             Practice on real interview questions, get feedback, and ace your next interview with confidence.
           </p>
           <Button asChild className="btn-primary max-sm:w-full">
@@ -28,7 +28,6 @@ const page = () => {
           {dummyInterviews.map((interview) => (
             <InterviewCard {... interview} key= {interview.id}/>
           ))} 
-          <p>You haven&apos;t taken any interviews yet</p>
         </div>
       </section>
 
