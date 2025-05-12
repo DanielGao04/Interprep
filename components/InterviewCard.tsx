@@ -1,5 +1,6 @@
 import React from 'react'
 import dayjs from 'dayjs';
+import { getRandomInterviewCover } from '@/public/utils';
 
 
 const InterviewCard = ({ interviewId, userID, role, type, techstack, createdAt}: InterviewCardProps) => {
@@ -11,9 +12,10 @@ const InterviewCard = ({ interviewId, userID, role, type, techstack, createdAt}:
     <div className="card-border w-[360px] max-sm:w-full min-h-96">
       <div className='card-interview'>
         <div>
-          <div>
+          <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg bg-light-600">
             <p className = "badge-text">{normalizedType}</p>
           </div>
+          <Image src={getRandomInterviewCover()} alt="cover" width={90} height={200} className="rounded-t-lg" /> 
         </div>
 
       </div>
