@@ -52,7 +52,7 @@ const AuthForm = ({ type }: { type: FormType}) => {
         
         const result = await signUp({
           uid: userCredentials.user.uid,
-          name,
+          name: name!,
           email,
           password,
         })
