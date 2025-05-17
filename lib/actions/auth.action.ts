@@ -22,7 +22,11 @@ export async function signUp(params: SignUpParams) {
             name, email,
         })
 
-
+        return {
+            success: true,
+            message: 'Account created successfully. Please sign in.'
+        }
+        
     } catch (e: any) {
         console.error('Error creating a user', e)
         if(e.code === 'auth/email-already-exists') {
@@ -66,7 +70,6 @@ export async function signIn(params: SignInParams) {
     }
 
 }
-
 
 export async function setSessionCookie(idToken: string) {
     const cookieStore = await cookies()
