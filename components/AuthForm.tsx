@@ -21,7 +21,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/firebase/client"
-import { signUp } from "@/lib/actions/auth.action"
+import { signIn, signUp } from "@/lib/actions/auth.action"
 
 
 const authFormSchema = (type: FormType) => {
