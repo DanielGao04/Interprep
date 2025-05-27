@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     
     try {
         const { text: questions } = await generateText({
-            model: google('gemini-2.0-flash001'),
+            model: google('gemini-2.0-flash-001'),
             prompt: `Prepare questions for a job interview.
             The job role is ${role}.
             The job experience level is ${level}.
@@ -26,16 +26,16 @@ export async function POST(request: Request) {
             
             Thank you! <3 
         `,
-        })
+        });
 
         const interview = {
-            role, type, level, 
+            type, role, level, 
             techstack: techstack.split(','), 
             questions: JSON.parse(questions),
             userid: userid,
             finalized: true,
             coverImage: getRandomInterviewCover(),
-            createdAt: new Date().toISOString(),
+            createdAt: new Date().toISOString()
         }
 
         await db.collection('interviews').add(interview);
