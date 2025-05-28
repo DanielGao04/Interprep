@@ -228,3 +228,239 @@ export const dummyInterviews: Interview[] = [
     createdAt: "2024-03-14T15:30:00Z",
   },
 ];
+
+export const generator = {
+  "name": "interview_prep",
+  "nodes": [
+    {
+      "name": "start_node",
+      "type": "start",
+      "metadata": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "conversation_1748388602278",
+      "type": "conversation",
+      "metadata": {
+        "position": {
+          "x": -79.75232463294404,
+          "y": 193.67216491311223
+        }
+      },
+      "prompt": "Greet the user and help them create a new AI interviewer",
+      "model": {
+        "provider": "openai",
+        "model": "gpt-4o",
+        "temperature": 0.7,
+        "maxTokens": 1000
+      },
+      "variableExtractionPlan": {
+        "output": [
+          {
+            "title": "role",
+            "description": "What role would you like to train for? ",
+            "type": "string",
+            "enum": []
+          },
+          {
+            "title": "type",
+            "description": "Are you aiming for a technical, behavioural or mixed interview?",
+            "type": "string",
+            "enum": []
+          },
+          {
+            "title": "level",
+            "description": "The job experience level required",
+            "type": "string",
+            "enum": [
+              "entry",
+              "mid",
+              "senior"
+            ]
+          },
+          {
+            "title": "techstack",
+            "description": "A list of technologies to cover during the job interview",
+            "type": "string",
+            "enum": []
+          },
+          {
+            "title": "amount",
+            "description": "How many questions would you like me to prepare for you?",
+            "type": "string",
+            "enum": []
+          }
+        ]
+      },
+      "messagePlan": {
+        "firstMessage": ""
+      }
+    },
+    {
+      "name": "conversation_1748390493810",
+      "type": "conversation",
+      "metadata": {
+        "position": {
+          "x": -83.0510944098763,
+          "y": 532.7389488902826
+        }
+      },
+      "prompt": "Say that the interview will be generated shortly",
+      "model": {
+        "provider": "openai",
+        "model": "gpt-4o",
+        "temperature": 0.7,
+        "maxTokens": 1000
+      },
+      "messagePlan": {
+        "firstMessage": ""
+      }
+    },
+    {
+      "name": "apiRequest_1748390536980",
+      "type": "tool",
+      "metadata": {
+        "position": {
+          "x": -80.85191455858813,
+          "y": 799.2327977749437
+        }
+      },
+      "tool": {
+        "type": "apiRequest",
+        "function": {
+          "name": "untitled_tool",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          }
+        },
+        "url": "https://mock-interview-platform-chi.vercel.app/api/vapi/generate",
+        "method": "POST",
+        "headers": null,
+        "body": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "",
+              "value": "{{ role }}"
+            },
+            "type": {
+              "type": "string",
+              "description": "",
+              "value": "{{ type }}"
+            },
+            "level": {
+              "type": "string",
+              "description": "",
+              "value": "{{ level }}"
+            },
+            "amount": {
+              "type": "string",
+              "description": "",
+              "value": "{{ amount }}"
+            },
+            "userid": {
+              "type": "string",
+              "description": "",
+              "value": "{{ userid }}"
+            },
+            "techstack": {
+              "type": "string",
+              "description": "",
+              "value": "{{ teckstack }}"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "conversation_1748390986995",
+      "type": "conversation",
+      "metadata": {
+        "position": {
+          "x": -80.85191455858813,
+          "y": 1049.2327977749437
+        }
+      },
+      "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully.",
+      "model": {
+        "provider": "openai",
+        "model": "gpt-4o",
+        "temperature": 0.7,
+        "maxTokens": 1000
+      },
+      "messagePlan": {
+        "firstMessage": ""
+      }
+    },
+    {
+      "name": "hangup_1748390992198",
+      "type": "hangup",
+      "metadata": {
+        "position": {
+          "x": 11.148085441411865,
+          "y": 1299.2327977749437
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "start_node",
+      "to": "conversation_1748388602278",
+      "condition": {
+        "type": "ai",
+        "prompt": ""
+      }
+    },
+    {
+      "from": "conversation_1748388602278",
+      "to": "conversation_1748390493810",
+      "condition": {
+        "type": "ai",
+        "prompt": "If user provided all the required variables"
+      }
+    },
+    {
+      "from": "conversation_1748390493810",
+      "to": "apiRequest_1748390536980",
+      "condition": {
+        "type": "ai",
+        "prompt": "if the user said yes"
+      }
+    },
+    {
+      "from": "apiRequest_1748390536980",
+      "to": "conversation_1748390986995",
+      "condition": {
+        "type": "ai",
+        "prompt": ""
+      }
+    },
+    {
+      "from": "conversation_1748390986995",
+      "to": "hangup_1748390992198",
+      "condition": {
+        "type": "ai",
+        "prompt": ""
+      }
+    }
+  ],
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a voice assistant helping with creating new AI interviewers. Your task is to collect data from the user. Remember that this is a voice conversation - do not use any special characters"
+      }
+    ],
+    "temperature": 0.7
+  }
+}
