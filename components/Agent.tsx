@@ -1,8 +1,10 @@
-'user client';
-import React, { use, useState } from 'react'
+"use client";
+
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { generator } from "@/constants";
 import { set } from 'zod';
 import { vapi } from '@/lib/vapi.sdk';
 
@@ -18,13 +20,13 @@ interface SavedMessage {
   content: string;
 }
 
-const Agent = ({ userName, userId, type }: AgentProps) => {
+const Agent = ({ userName, userId, type, interviewId, feedbackId, questions }: AgentProps) => {
   const router = useRouter();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [messages, setMessages] = useState<SavedMessage[]>([]);
-
-  userEffect(() => {
+  
+  useEffect(() => {
     const onCallStart = () => setCallStatus(CallStatus.ACTIVE); 
     const onCallEnd = () => setCallStatus(CallStatus.FINISHED);
 
@@ -47,7 +49,66 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
     vapi.on('speech-end', onSpeachEnd);
     vapi.on('error', onError);
     
+    return () => {
+      vapi.off('call-start', onCallStart);
+      vapi.off('call-end', onCallEnd);
+      vapi.off('message', onMessage);
+      vapi.off('speech-start', onSpeachStart);
+      vapi.off('speech-end', onSpeachEnd);
+      vapi.off('error', onError);
+    }
+
   }, [])
+
+
+  useEffect(() => {
+    if (callStatus === CallStatus.FINISHED) router.push('/');
+  }, [messages, callStatus, type, userId] )
+
+  const handleCall = async () => {
+    setCallStatus(CallStatus.CONNECTING);
+
+    if (type === "generate") {
+      await vapi.start(
+        undefined,
+        {
+          variableValues: {
+            username: userName,
+            userid: userId,
+          },
+          clientMessages: ["transcript"],
+          serverMessages: [],
+        },
+        undefined,
+        generator
+      );
+    } else {
+      let formattedQuestions = "";
+      if (questions) {
+        formattedQuestions = questions
+          .map((question) => `- ${question}`)
+          .join("\n");
+      }
+
+      await vapi.start(interviewer, {
+        variableValues: {
+          questions: formattedQuestions,
+        },
+        clientMessages: ["transcript"],
+        serverMessages: [],
+      });
+    }
+  }
+
+  const handleDisconnect = async () => {
+    setCallStatus(CallStatus.FINISHED);
+    vapi.stop();
+  }
+
+  const latestMessage = messages[messages.length - 1]?.content;
+
+  const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
+
 
   const lastMessage = messages[messages.length - 1];
   return (
@@ -70,7 +131,8 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
       {messages.length > 0 && (
         <div className='transcript-border'>
           <div className="transscript">
-            <p key={lastMessage} className={cn('transition-opacity duration-500 opacity-0', 'animate fade-in opacity-100')}>
+            <p key={lastMessage} className={cn('transition-opacity duration-500 opacity-0', 'animate fade-in opacity-100')}
+            >
               {lastMessage}
             </p>
 
@@ -81,16 +143,16 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
 
       <div className='w-full flex justify-center'>
         {callStatus !== 'ACTIVE' ? (
-          <button className='relative btn-call'>
+          <button className='relative btn-call' onClick={handleCall}>
             <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus !== 'CONNECTING' && 'hidden')}
                />
               <span>
-                {callStatus === 'INACTIVE' || callStatus === 'FINISHED' ? 'Call' : '. . . '}
+                { isCallInactiveOrFinished ? 'Call' : '. . . '}
               </span>
 
           </button>
         ) : (
-          <button className="btn-disconnect">
+          <button className="btn-disconnect" onClick={handleDisconnect}>
             End
           </button>
         )}
