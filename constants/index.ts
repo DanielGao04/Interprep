@@ -288,7 +288,7 @@ export const generator = {
         ]
       },
       "messagePlan": {
-        "firstMessage": ""
+        "firstMessage": "Hi"
       }
     },
     {
@@ -300,7 +300,7 @@ export const generator = {
           "y": 278.6542157596679
         }
       },
-      "prompt": "Say that the interview will be generated shortly",
+      "prompt": "Say that the interview will be generated shortly and please wait a moment",
       "model": {
         "model": "gpt-4o",
         "provider": "openai",
@@ -317,11 +317,11 @@ export const generator = {
       "metadata": {
         "position": {
           "x": -398.4684021933373,
-          "y": 528.654215759668
+          "y": 488.8294091550845
         }
       },
       "tool": {
-        "url": `${process.env.NEXT_PUBLIC_BASE_URL}/api/vapi/generate`,
+        "url": "https://mock-interview-platform-chi.vercel.app/api/vapi/generate",
         "body": {
           "type": "object",
           "properties": {
@@ -400,19 +400,19 @@ export const generator = {
       }
     },
     {
-      "from": "conversation_1748629050072",
-      "to": "API Request",
-      "condition": {
-        "type": "ai",
-        "prompt": "if the user said yes"
-      }
-    },
-    {
       "from": "API Request",
       "to": "conversation_1748629478214",
       "condition": {
         "type": "ai",
-        "prompt": "if the user said yes"
+        "prompt": ""
+      }
+    },
+    {
+      "from": "conversation_1748629050072",
+      "to": "API Request",
+      "condition": {
+        "type": "ai",
+        "prompt": ""
       }
     }
   ],
