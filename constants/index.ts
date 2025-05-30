@@ -288,7 +288,7 @@ export const generator = {
         ]
       },
       "messagePlan": {
-        "firstMessage": "Hi"
+        "firstMessage": ""
       }
     },
     {
@@ -296,8 +296,8 @@ export const generator = {
       "type": "conversation",
       "metadata": {
         "position": {
-          "x": -398.4684021933373,
-          "y": 278.6542157596679
+          "x": -396.93680438667457,
+          "y": 240.36427059310006
         }
       },
       "prompt": "Say that the interview will be generated shortly and please wait a moment",
@@ -375,7 +375,7 @@ export const generator = {
       "metadata": {
         "position": {
           "x": -398.4684021933373,
-          "y": 778.654215759668
+          "y": 711.9875490930013
         }
       },
       "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully",
@@ -418,4 +418,3 @@ export const generator = {
   ],
   "globalPrompt": ""
 }
-
