@@ -153,6 +153,7 @@ End the conversation on a polite and positive note.
       },
     ],
   },
+
 };
 
 export const feedbackSchema = z.object({
@@ -230,69 +231,60 @@ export const dummyInterviews: Interview[] = [
 ];
 
 export const generator = {
-  "name": "interview_prep",
+  "name": "Generate Interview",
   "nodes": [
     {
-      "name": "start_node",
-      "type": "start",
-      "metadata": {
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      }
-    },
-    {
-      "name": "conversation_1748388602278",
+      "name": "introduction",
       "type": "conversation",
+      "isStart": true,
       "metadata": {
         "position": {
-          "x": -79.75232463294404,
-          "y": 193.67216491311223
+          "x": -400,
+          "y": -100
         }
       },
-      "prompt": "Greet the user and help them create a new AI interviewer",
+      "prompt": "Greet the user and help them create a new AI Interviewer",
       "model": {
-        "provider": "openai",
         "model": "gpt-4o",
-        "temperature": 0.7,
-        "maxTokens": 1000
+        "provider": "openai",
+        "maxTokens": 1000,
+        "temperature": 0.7
       },
       "variableExtractionPlan": {
         "output": [
           {
-            "title": "role",
-            "description": "What role would you like to train for? ",
-            "type": "string",
-            "enum": []
-          },
-          {
-            "title": "type",
-            "description": "Are you aiming for a technical, behavioural or mixed interview?",
-            "type": "string",
-            "enum": []
-          },
-          {
-            "title": "level",
-            "description": "The job experience level required",
-            "type": "string",
             "enum": [
               "entry",
               "mid",
               "senior"
-            ]
-          },
-          {
-            "title": "techstack",
-            "description": "A list of technologies to cover during the job interview",
+            ],
             "type": "string",
-            "enum": []
+            "title": "level",
+            "description": "The job experience level"
           },
           {
+            "enum": [],
+            "type": "number",
             "title": "amount",
-            "description": "How many questions would you like me to prepare for you?",
+            "description": "How many questions would you like to generate? "
+          },
+          {
+            "enum": [],
             "type": "string",
-            "enum": []
+            "title": "techstack",
+            "description": "A list of technologies to cover during the job interview. "
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "role",
+            "description": "What role should would you like to train for?"
+          },
+          {
+            "enum": [],
+            "type": "string",
+            "title": "type",
+            "description": "What type of the interview should it be? "
           }
         ]
       },
@@ -301,166 +293,130 @@ export const generator = {
       }
     },
     {
-      "name": "conversation_1748390493810",
+      "name": "conversation_1748629050072",
       "type": "conversation",
       "metadata": {
         "position": {
-          "x": -83.0510944098763,
-          "y": 532.7389488902826
+          "x": -398.4684021933373,
+          "y": 278.6542157596679
         }
       },
       "prompt": "Say that the interview will be generated shortly",
       "model": {
-        "provider": "openai",
         "model": "gpt-4o",
-        "temperature": 0.7,
-        "maxTokens": 1000
+        "provider": "openai",
+        "maxTokens": 1000,
+        "temperature": 0.7
       },
       "messagePlan": {
         "firstMessage": ""
       }
     },
     {
-      "name": "apiRequest_1748390536980",
+      "name": "API Request",
       "type": "tool",
       "metadata": {
         "position": {
-          "x": -80.85191455858813,
-          "y": 799.2327977749437
+          "x": -398.4684021933373,
+          "y": 528.654215759668
         }
       },
       "tool": {
-        "type": "apiRequest",
-        "function": {
-          "name": "untitled_tool",
-          "parameters": {
-            "type": "object",
-            "properties": {},
-            "required": []
-          }
-        },
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/vapi/generate`,
-        "method": "POST",
-        "headers": null,
+        "url": `${process.env.NEXT_PUBLIC_BASE_URL}/api/vapi/generate`,
         "body": {
           "type": "object",
           "properties": {
             "role": {
               "type": "string",
-              "description": "",
-              "value": "{{ role }}"
+              "value": "{{ role }}",
+              "description": ""
             },
             "type": {
               "type": "string",
-              "description": "",
-              "value": "{{ type }}"
+              "value": "{{ type }}",
+              "description": ""
             },
             "level": {
               "type": "string",
-              "description": "",
-              "value": "{{ level }}"
+              "value": "{{ level }}",
+              "description": ""
             },
             "amount": {
-              "type": "string",
-              "description": "",
-              "value": "{{ amount }}"
+              "type": "number",
+              "value": "{{ amount }}",
+              "description": ""
             },
             "userid": {
               "type": "string",
-              "description": "",
-              "value": "{{ userid }}"
+              "value": "{{ userid }}",
+              "description": ""
             },
             "techstack": {
               "type": "string",
-              "description": "",
-              "value": "{{ teckstack }}"
+              "value": "{{ teckstack }}",
+              "description": ""
             }
+          }
+        },
+        "type": "apiRequest",
+        "method": "POST",
+        "function": {
+          "name": "untitled_tool",
+          "parameters": {
+            "type": "object",
+            "required": [],
+            "properties": {}
           }
         }
       }
     },
     {
-      "name": "conversation_1748390986995",
+      "name": "conversation_1748629478214",
       "type": "conversation",
       "metadata": {
         "position": {
-          "x": -80.85191455858813,
-          "y": 1049.2327977749437
+          "x": -398.4684021933373,
+          "y": 778.654215759668
         }
       },
-      "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully.",
+      "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully",
       "model": {
-        "provider": "openai",
         "model": "gpt-4o",
-        "temperature": 0.7,
-        "maxTokens": 1000
+        "provider": "openai",
+        "maxTokens": 1000,
+        "temperature": 0.7
       },
       "messagePlan": {
         "firstMessage": ""
-      }
-    },
-    {
-      "name": "hangup_1748390992198",
-      "type": "hangup",
-      "metadata": {
-        "position": {
-          "x": 11.148085441411865,
-          "y": 1299.2327977749437
-        }
       }
     }
   ],
   "edges": [
     {
-      "from": "start_node",
-      "to": "conversation_1748388602278",
-      "condition": {
-        "type": "ai",
-        "prompt": ""
-      }
-    },
-    {
-      "from": "conversation_1748388602278",
-      "to": "conversation_1748390493810",
+      "from": "introduction",
+      "to": "conversation_1748629050072",
       "condition": {
         "type": "ai",
         "prompt": "If user provided all the required variables"
       }
     },
     {
-      "from": "conversation_1748390493810",
-      "to": "apiRequest_1748390536980",
+      "from": "conversation_1748629050072",
+      "to": "API Request",
       "condition": {
         "type": "ai",
         "prompt": "if the user said yes"
       }
     },
     {
-      "from": "apiRequest_1748390536980",
-      "to": "conversation_1748390986995",
+      "from": "API Request",
+      "to": "conversation_1748629478214",
       "condition": {
         "type": "ai",
-        "prompt": ""
-      }
-    },
-    {
-      "from": "conversation_1748390986995",
-      "to": "hangup_1748390992198",
-      "condition": {
-        "type": "ai",
-        "prompt": ""
+        "prompt": "if the user said yes"
       }
     }
   ],
-  "model": {
-    "provider": "openai",
-    "model": "gpt-4o",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a voice assistant helping with creating new AI interviewers. Your task is to collect data from the user. Remember that this is a voice conversation - do not use any special characters"
-      }
-    ],
-    "temperature": 0.7
-  }
+  "globalPrompt": ""
 }
+

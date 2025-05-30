@@ -62,7 +62,7 @@ const Agent = ({ userName, userId, type, interviewId, feedbackId, questions }: A
 
   useEffect(() => {
     if (callStatus === CallStatus.FINISHED) router.push('/');
-  }, [messages, callStatus, type, userId] )
+  }, [messages, callStatus, type, userId, router] )
 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
@@ -75,8 +75,8 @@ const Agent = ({ userName, userId, type, interviewId, feedbackId, questions }: A
             username: userName,
             userid: userId,
           },
-          clientMessages: "transcript",
-          serverMessages: "transcript",
+          clientMessages: ["transcript"],
+          serverMessages: [],
         },
         undefined,
         generator
@@ -93,11 +93,11 @@ const Agent = ({ userName, userId, type, interviewId, feedbackId, questions }: A
         variableValues: {
           questions: formattedQuestions,
         },
-        clientMessages: "transcript",
-        serverMessages: "transcript",
+        clientMessages: ["transcript"],
+        serverMessages: [],
       });
     }
-  }
+  };
 
   const handleDisconnect = async () => {
     setCallStatus(CallStatus.FINISHED);
