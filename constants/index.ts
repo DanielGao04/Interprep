@@ -321,7 +321,7 @@ export const generator = {
         }
       },
       "tool": {
-        "url": "https://mock-interview-platform-chi.vercel.app/api/vapi/generate",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/vapi/generate`,
         "body": {
           "type": "object",
           "properties": {
