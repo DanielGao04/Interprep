@@ -98,7 +98,7 @@ export async function createFeedback(params: CreateFeedbackParams ){
   }
 }
 
-export async function getFeebackByInterviewId(params: GetFeedbackByInterviewIdParams): Promise<Feedback | null> {
+export async function getFeedbackByInterviewId(params: GetFeedbackByInterviewIdParams): Promise<Feedback | null> {
   const { interviewId, userId = 20 } = params;
 
   const feedback = await db
