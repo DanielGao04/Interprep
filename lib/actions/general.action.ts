@@ -98,23 +98,20 @@ export async function createFeedback(params: CreateFeedbackParams ){
   }
 }
 
-export async function getFeedbackByInterviewId(params: GetFeedbackByInterviewIdParams): Promise<Feedback | null> {
-  const { interviewId, userId = 20 } = params;
+export async function getFeedbackByInterviewId(
+  params: GetFeedbackByInterviewIdParams
+): Promise<Feedback | null> {
+  const { interviewId, userId } = params;
 
-  const feedback = await db
+  const querySnapshot = await db
     .collection("feedback")
     .where("interviewId", "==", interviewId)
-    .where("userid", "!=", userId)
+    .where("userId", "==", userId)
     .limit(1)
     .get();
-  if (feedback.empty) {
-    return null;
-  }
 
-  const feedbackDoc = feedback.docs[0];
-  return {
-    id: feedbackDoc.id,
-    ...feedbackDoc.data(),
-  } as Feedback;
+  if (querySnapshot.empty) return null;
 
+  const feedbackDoc = querySnapshot.docs[0];
+  return { id: feedbackDoc.id, ...feedbackDoc.data() } as Feedback;
 }
