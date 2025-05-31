@@ -20,7 +20,7 @@ interface SavedMessage {
   content: string;
 }
 
-const Agent = ({ userName, userId, type, questions, interviewId }: AgentProps) => {
+const Agent = ({ userName, userId, type, questions, interviewId, feedbackId}: AgentProps) => {
   const router = useRouter();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
@@ -66,7 +66,8 @@ const Agent = ({ userName, userId, type, questions, interviewId }: AgentProps) =
     const { success, feedbackId: id } = await createFeedback({
       interviewId: interviewId!,
       userId: userId!,
-      transcript: messages
+      transcript: messages,
+      feedbackId,
     })
 
     
@@ -88,7 +89,7 @@ const Agent = ({ userName, userId, type, questions, interviewId }: AgentProps) =
     }
   
     if (callStatus === CallStatus.FINISHED) router.push('/');
-  }, [messages, callStatus, type, userId, router] )
+  }, [messages, callStatus, feedbackId, interviewId, router, type, userId] )
 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
