@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import { generator } from "@/constants";
 import { vapi } from '@/lib/vapi.sdk';
 import { interviewer } from '@/constants';
-import { create } from 'domain';
 import { createFeedback } from '@/lib/actions/general.action';
 enum CallStatus {
   INACTIVE = 'INACTIVE',
