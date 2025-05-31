@@ -37,11 +37,7 @@ export async function getLatestInterviews(params: GetLatestInterviewsParams): Pr
 }
 
 export async function getInterviewById(id: string): Promise<Interview | null> {
-  const interviews = await db
-    .collection("interviews")
-    .doc(id)
-    .get();
+  const interview = await db.collection("interviews").doc(id).get();
 
-    return interviews.data() as Interview | null;
-
+  return interview.data() as Interview | null;
 }
