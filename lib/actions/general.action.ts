@@ -46,7 +46,7 @@ export async function getInterviewById(id: string): Promise<Interview | null> {
 }
 
 export async function createFeedback(params: CreateFeedbackParams ){
-  const { interviewId, userId, transcript } = params;
+  const { interviewId, userId, transcript, feedbackId } = params;
   
   
   try {
@@ -97,6 +97,7 @@ export async function createFeedback(params: CreateFeedbackParams ){
     return { success: false }
   }
 }
+
 
 export async function getFeedbackByInterviewId(
   params: GetFeedbackByInterviewIdParams

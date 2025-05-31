@@ -89,7 +89,7 @@ const Agent = ({ userName, userId, type, questions, interviewId, feedbackId}: Ag
     }
   
     if (callStatus === CallStatus.FINISHED) router.push('/');
-  }, [messages, callStatus, feedbackId, interviewId, router, type, userId] )
+  }, [messages, callStatus, feedbackId, interviewId, router, type, userId]);
 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
