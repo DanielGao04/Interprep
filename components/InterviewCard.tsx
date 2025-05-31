@@ -16,7 +16,8 @@ const InterviewCard = async ({ id, userId, role, type, techstack, createdAt }: I
 
   const normalizedType = /mix/gi.test(type) ? 'Mixed' : type
   const formattedDate = dayjs(feedback?.createdAt || createdAt || Date.now()).format('MMM D, YYYY')
-
+  const totalScore = feedback?.totalScore || '---'
+  
   return (
     <div className="card-border w-[360px] max-sm:w-full min-h-96">
       <div className="card-interview">
@@ -47,7 +48,7 @@ const InterviewCard = async ({ id, userId, role, type, techstack, createdAt }: I
               </div>
               <div className="flex items-center gap-2">
                 <Image src="/star.svg" alt="star" width={22} height={22} />
-                <p className="text-sm">{feedback?.totalScore || '---'}/100</p>
+                <p className="text-sm">{totalScore}/100</p>
               </div>
             </div>
             <p className="text-sm line-clamp-2">
