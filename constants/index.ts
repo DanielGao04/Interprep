@@ -242,7 +242,7 @@ export const generator = {
           "y": -100
         }
       },
-      "prompt": "Greet the user and help them create a new AI Interviewer",
+      "prompt": "Greet the user and help them create a new AI Interviewer.",
       "model": {
         "model": "gpt-4o",
         "provider": "openai",
@@ -288,7 +288,7 @@ export const generator = {
         ]
       },
       "messagePlan": {
-        "firstMessage": ""
+        "firstMessage": "Hi how are you doing"
       }
     },
     {
@@ -296,8 +296,8 @@ export const generator = {
       "type": "conversation",
       "metadata": {
         "position": {
-          "x": -396.93680438667457,
-          "y": 240.36427059310006
+          "x": -392.03058496430685,
+          "y": 262.93287993599165
         }
       },
       "prompt": "Say that the interview will be generated shortly and please wait a moment",
@@ -388,6 +388,19 @@ export const generator = {
       "messagePlan": {
         "firstMessage": ""
       }
+    },
+    {
+      "name": "hangup_1748801121730",
+      "type": "tool",
+      "metadata": {
+        "position": {
+          "x": -398.6016240679702,
+          "y": 1006.8782964287087
+        }
+      },
+      "tool": {
+        "type": "endCall"
+      }
     }
   ],
   "edges": [
@@ -410,6 +423,14 @@ export const generator = {
     {
       "from": "conversation_1748629050072",
       "to": "API Request",
+      "condition": {
+        "type": "ai",
+        "prompt": ""
+      }
+    },
+    {
+      "from": "conversation_1748629478214",
+      "to": "hangup_1748801121730",
       "condition": {
         "type": "ai",
         "prompt": ""
