@@ -46,7 +46,7 @@ const Home = () => {
         </h2>
         <p className="text-black max-w-3xl mx-auto text-center text-lg leading-relaxed">
           InterPrep is your all-in-one platform to practice real interview scenarios, receive AI-powered feedback, and track your progress over time. 
-          Whether you're preparing for your first interview or aiming to sharpen your skills, InterPrep helps you build confidence and succeed.
+          Whether you&apos;re preparing for your first interview or aiming to sharpen your skills, InterPrep helps you build confidence and succeed.
         </p>
       </section>
 
