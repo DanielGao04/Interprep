@@ -57,7 +57,7 @@ const page = async () => {
               userInterviews?.map((interview) => (
                 <InterviewCard {... interview} key= {interview.id}/>
               ))) : (
-                <p>You havent taken any intervews yet</p>
+                <p>You haven&apos;t taken any intervews yet</p>
               )
             }
 
