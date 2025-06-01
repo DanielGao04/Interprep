@@ -88,7 +88,7 @@ const Home = () => {
             <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
               <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
                 <Image
-                  src="/feedback preview.png"
+                  src="/feedbackpreview.png"
                   alt="AI feedback preview"
                   width={1200}
                   height={675}
