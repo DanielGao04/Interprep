@@ -147,8 +147,8 @@ const Home = () => {
               "Fear of Unexpected Questions",
               "Lack of Experience and Preparation",
               "Low Interview Success Rate",
-              "Language Barriers",
-              "Slow Job Search Process",
+              "Fear of Failure",
+              "Sttuttering or Nervousness",
             ].map((problem, idx) => (
               <div
                 key={idx}
