@@ -25,23 +25,23 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <ScrollFadeIn>
-        <section className="w-full text-center py-24 px-6 bg-gradient-to-r from-primary-800 via-primary-900 to-primary-800">
-          <h1 className="text-5xl font-extrabold leading-tight mb-8 text-primary-200">
-            Ace Your Interviews with InterPrep
-          </h1>
-          <p className="text-xl text-primary-300 max-w-2xl mx-auto mb-12">
-            Practice real interviews, receive AI-driven feedback, and improve your confidence — all in one place.
-          </p>
-          <div className="flex justify-center">
-            <Link href="/sign-up">
-              <Button className="btn-primary px-12 py-4 text-lg bg-primary-700 hover:bg-primary-600 text-primary-100">
-                Sign Up For Free
-              </Button>
-            </Link>
-          </div>
-        </section>
-      </ScrollFadeIn>
+      <section className="w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-6 bg-gradient-to-r from-primary-800 via-primary-900 to-primary-800">
+        <h1 className="text-6xl md:text-7xl font-extrabold leading-tight mb-8 text-primary-200">
+          Ace Your Interviews<br />with InterPrep
+        </h1>
+        <p className="text-xl md:text-2xl text-primary-300 max-w-2xl mx-auto mb-12">
+          Practice real interviews, receive AI-driven feedback, and improve your confidence — all in one place.
+        </p>
+
+        <div className="flex justify-center">
+          <Link href="/sign-up">
+            <Button className="btn-primary px-12 py-4 text-lg bg-primary-700 hover:bg-primary-600 text-primary-100 shadow-lg">
+              Sign Up For Free
+            </Button>
+          </Link>
+        </div>
+      </section>
+
 
       {/* About InterPrep Section */}
       <section className="py-32 px-6 w-full bg-primary-800 text-center">
