@@ -63,15 +63,40 @@ const Home = () => {
           <p className="text-primary-400 text-lg mb-12 max-w-2xl mx-auto">
             Experience realistic interview sessions and receive immediate AI-generated feedback tailored to your performance.
           </p>
-          <div className="w-full flex justify-center">
-            <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 relative">
+
+          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+            {/* Card 1 */}
+            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto">
               <Image
                 src="/interviewpreview.png"
                 alt="Live interview preview"
                 width={1200}
                 height={675}
-                className="rounded-xl w-full h-auto object-cover border-2 border-primary-700 shadow-lg shadow-primary-800/40 transition-transform duration-300 hover:scale-105"
+                className="rounded-t-xl w-full h-auto object-cover"
               />
+              <div className="p-4 text-primary-200">
+                <h3 className="text-xl font-semibold mb-2">Interview Session</h3>
+                <p className="text-primary-400 text-sm">
+                  Simulate real interview scenarios with dynamic questions and responses.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto">
+              <Image
+                src="/feedback preview.png"
+                alt="AI feedback preview"
+                width={1200}
+                height={675}
+                className="rounded-t-xl w-full h-auto object-cover"
+              />
+              <div className="p-4 text-primary-200">
+                <h3 className="text-xl font-semibold mb-2">AI Feedback</h3>
+                <p className="text-primary-400 text-sm">
+                  Receive instant, actionable AI-generated feedback on your interview performance.
+                </p>
+              </div>
             </div>
           </div>
         </section>
