@@ -300,7 +300,7 @@ export const generator = {
           "y": 262.93287993599165
         }
       },
-      "prompt": "Say that the interview will be generated shortly and please wait a moment",
+      "prompt": "Say that the interview will be generated shortly and please wait a moment.",
       "model": {
         "model": "gpt-4o",
         "provider": "openai",
@@ -378,7 +378,7 @@ export const generator = {
           "y": 711.9875490930013
         }
       },
-      "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully",
+      "prompt": "Thank the user for the conversation and inform them that the interview has been generated successfully. Tell them to click the end call button and they will see their interview",
       "model": {
         "model": "gpt-4o",
         "provider": "openai",
@@ -387,19 +387,6 @@ export const generator = {
       },
       "messagePlan": {
         "firstMessage": ""
-      }
-    },
-    {
-      "name": "hangup_1748801121730",
-      "type": "tool",
-      "metadata": {
-        "position": {
-          "x": -398.6016240679702,
-          "y": 1006.8782964287087
-        }
-      },
-      "tool": {
-        "type": "endCall"
       }
     }
   ],
@@ -423,14 +410,6 @@ export const generator = {
     {
       "from": "conversation_1748629050072",
       "to": "API Request",
-      "condition": {
-        "type": "ai",
-        "prompt": ""
-      }
-    },
-    {
-      "from": "conversation_1748629478214",
-      "to": "hangup_1748801121730",
       "condition": {
         "type": "ai",
         "prompt": ""
