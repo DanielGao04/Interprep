@@ -25,7 +25,7 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-6 bg-gradient-to-r from-primary-800 via-primary-900 to-primary-800">
+      <section className=" border w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-6 bg-gradient-to-r from-primary-800 via-primary-900 to-primary-800">
         <h1 className="text-6xl md:text-7xl font-extrabold leading-tight mb-8 text-primary-200">
           Ace Your Interviews<br />with InterPrep
         </h1>
@@ -44,7 +44,7 @@ const Home = () => {
 
 
       {/* About InterPrep Section */}
-      <section className="py-32 px-6 w-full bg-primary-800 text-center">
+      <section className=" border py-32 px-6 w-full bg-primary-800 text-center">
         <h2 className="text-5xl font-bold mb-8 text-primary-100">
           What is InterPrep?
         </h2>
@@ -66,15 +66,17 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
             {/* Card 1 */}
-            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto">
-              <Image
-                src="/interviewpreview.png"
-                alt="Live interview preview"
-                width={1200}
-                height={675}
-                className="rounded-t-xl w-full h-auto object-cover"
-              />
-              <div className="p-4 text-primary-200">
+            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
+              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
+                <Image
+                  src="/interviewpreview.png"
+                  alt="Live interview preview"
+                  width={1200}
+                  height={675}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
                 <h3 className="text-xl font-semibold mb-2">Interview Session</h3>
                 <p className="text-primary-400 text-sm">
                   Simulate real interview scenarios with dynamic questions and responses.
@@ -83,24 +85,46 @@ const Home = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto">
-              <Image
-                src="/feedback preview.png"
-                alt="AI feedback preview"
-                width={1200}
-                height={675}
-                className="rounded-t-xl w-full h-auto object-cover"
-              />
-              <div className="p-4 text-primary-200">
+            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
+              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
+                <Image
+                  src="/feedback preview.png"
+                  alt="AI feedback preview"
+                  width={1200}
+                  height={675}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
                 <h3 className="text-xl font-semibold mb-2">AI Feedback</h3>
                 <p className="text-primary-400 text-sm">
                   Receive instant, actionable AI-generated feedback on your interview performance.
                 </p>
               </div>
             </div>
+
+            {/* Card 3 */}
+            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
+              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
+                <Image
+                  src="/generatepreview.png"
+                  alt="Interview generation preview"
+                  width={1200}
+                  height={675}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
+                <h3 className="text-xl font-semibold mb-2">Interview Generation</h3>
+                <p className="text-primary-400 text-sm">
+                  Generate personalized interviews based on your needs.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </ScrollFadeIn>
+
 
       {/* Why InterPrep Section */}
       <ScrollFadeIn>
