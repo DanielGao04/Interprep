@@ -77,7 +77,10 @@ const page = async () => {
             }
         </div>
       </section>
-
+      
+      <footer className="py-6 text-sm text-primary-500">
+        &copy; {new Date().getFullYear()} InterPrep. Built with ❤️ by Daniel.
+      </footer>
 
     </>
   )
