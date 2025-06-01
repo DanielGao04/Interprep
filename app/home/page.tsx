@@ -3,17 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Home = () => {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-primary-900 to-primary-800 text-primary-100">
       {/* Header */}
       <header className="w-full flex justify-between items-center px-6 py-4 border-b border-primary-700 bg-primary-900 sticky top-0 z-50">
-        <Link href="/">
-          <h1 className="text-xl font-bold text-primary-300 tracking-tight cursor-pointer">
-            InterPrep
-          </h1>
-        </Link>
+        <nav>
+          <Link href="/" className="flex items-center gap-2" >
+            <Image src="/logo.svg" alt="logo" width={38} height={32} />
+            <h2 className="text-primary-100">InterPrep</h2>
+          </Link>
+        </nav>
         <Link href="/sign-in">
           <Button className="btn-primary px-5 py-2 text-sm font-medium bg-primary-700 hover:bg-primary-600 text-primary-100">
             Sign In
