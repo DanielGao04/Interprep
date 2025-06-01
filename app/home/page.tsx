@@ -65,66 +65,45 @@ const Home = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            {/* Card 1 */}
-            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
-              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
-                <Image
-                  src="/interviewpreview.png"
-                  alt="Live interview preview"
-                  width={1200}
-                  height={675}
-                  className="w-full h-full object-cover"
-                />
+            {/* Shared card style */}
+            {[{
+              title: 'Interview Session',
+              description: 'Simulate real interview scenarios with dynamic questions and responses.',
+              src: '/interviewpreview.png',
+              alt: 'Live interview preview'
+            }, {
+              title: 'AI Feedback',
+              description: 'Receive instant, actionable AI-generated feedback on your interview performance.',
+              src: '/feedbackpreview.png',
+              alt: 'AI feedback preview'
+            }, {
+              title: 'Interview Generation',
+              description: 'Generate personalized interviews based on your needs.',
+              src: '/generatepreview.png',
+              alt: 'Interview generation preview'
+            }].map((card, idx) => (
+              <div
+                key={idx}
+                className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm w-full flex flex-col"
+              >
+                <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
+                  <Image
+                    src={card.src}
+                    alt={card.alt}
+                    width={1200}
+                    height={675}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between min-h-[140px]">
+                  <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+                  <p className="text-primary-400 text-sm">{card.description}</p>
+                </div>
               </div>
-              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-2">Interview Session</h3>
-                <p className="text-primary-400 text-sm">
-                  Simulate real interview scenarios with dynamic questions and responses.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
-              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
-                <Image
-                  src="/feedbackpreview.png"
-                  alt="AI feedback preview"
-                  width={1200}
-                  height={675}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-2">AI Feedback</h3>
-                <p className="text-primary-400 text-sm">
-                  Receive instant, actionable AI-generated feedback on your interview performance.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-primary-800 rounded-xl shadow-lg border border-primary-700 max-w-sm mx-auto flex flex-col">
-              <div className="h-48 sm:h-60 overflow-hidden rounded-t-xl">
-                <Image
-                  src="/generatepreview.png"
-                  alt="Interview generation preview"
-                  width={1200}
-                  height={675}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4 text-primary-200 flex-1 flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-2">Interview Generation</h3>
-                <p className="text-primary-400 text-sm">
-                  Generate personalized interviews based on your needs.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
       </ScrollFadeIn>
-
 
       {/* Why InterPrep Section */}
       <ScrollFadeIn>
