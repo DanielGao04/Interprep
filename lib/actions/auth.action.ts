@@ -116,7 +116,7 @@ export async function getCurrentUser(): Promise<User | null> {
   } catch (error) {
     console.log(error);
 
-    // Invalid or expired session
+    // Invalid session
     return null;
   }
 }
