@@ -24,7 +24,7 @@ const Home = () => {
       </Link>
     </header>
 
-      {/* Hero Section */}
+      {/* Big Intro Section */}
       <section className=" border w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-6 bg-gradient-to-r from-primary-800 via-primary-900 to-primary-800">
         <h1 className="text-6xl md:text-7xl font-extrabold leading-tight mb-8 text-primary-200">
           Ace Your Interviews<br />with InterPrep
