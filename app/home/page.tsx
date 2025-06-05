@@ -184,6 +184,11 @@ const Home = () => {
                   "“Love how I can track my progress and see clear insights on where I need to improve. Highly recommend!”",
                 name: "— Priya S.",
               },
+              {
+                quote:
+                  "“Extremely easy to use and made my interview prep go a lot smoother. Definitely would recommend especially while it's free!”",
+                name: "— Kevin C.",
+              },
             ].map(({ quote, name }, idx) => (
               <div key={idx} className="p-6 bg-primary-800 rounded-xl shadow-inner border border-primary-700">
                 <p className="text-primary-300 italic mb-4">{quote}</p>
