@@ -186,7 +186,7 @@ const Home = () => {
               },
               {
                 quote:
-                  "“Extremely easy to use and made my interview prep go a lot smoother. Definitely would recommend especially while it's free!”",
+                  "“Extremely easy to use and made my interview prep go a lot smoother. Definitely would recommend especially since it's completely free!”",
                 name: "— Kevin C.",
               },
             ].map(({ quote, name }, idx) => (
